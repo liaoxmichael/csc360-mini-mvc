@@ -20,8 +20,8 @@ public class AdderModel
 	{
 		this.sum.set(sum);
 	}
-	
-	public SimpleIntegerProperty sumProperty() 
+
+	public SimpleIntegerProperty sumProperty()
 	{
 		return this.sum;
 	}

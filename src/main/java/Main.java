@@ -13,21 +13,21 @@ public class Main extends Application
 	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("views/MainView.fxml"));
-		
+
 		AnchorPane view = loader.load();
-		
+
 		SumController controller = loader.getController();
 		AdderModel model = new AdderModel();
 		controller.setModel(model);
-		
+
 		Scene s = new Scene(view);
 		stage.setScene(s);
 		stage.show();
 	}
-	
+
 	public static void main(String[] args)
 	{
-		launch(args); 
+		launch(args);
 	}
 
 }
