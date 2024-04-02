@@ -1,16 +1,33 @@
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import models.AdderModel;
+import views.SumController;
 
-public class Main
+public class Main extends Application
 {
-
-	public Main()
+	@Override
+	public void start(Stage stage) throws Exception
 	{
-		// TODO Auto-generated constructor stub
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("views/MainView.fxml"));
+		
+		AnchorPane view = loader.load();
+		
+		SumController controller = loader.getController();
+		AdderModel model = new AdderModel();
+		controller.setModel(model);
+		
+		Scene s = new Scene(view);
+		stage.setScene(s);
+		stage.show();
 	}
-
+	
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
-
+		launch(args); 
 	}
 
 }
