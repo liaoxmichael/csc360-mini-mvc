@@ -36,29 +36,33 @@ public class MainViewTest
 		stage.show();
 	}
 
-	private void enterAmount(FxRobot robot, int num, String target)
+	private void enterAmount(FxRobot robot, String num, String target)
 	{
 		robot.clickOn(target);
-		robot.write(String.valueOf(num));
+		robot.write(num);
 	}
 
-	private void checkSum(FxRobot robot, int expected)
+	private void checkSum(FxRobot robot, String expected)
 	{
 		robot.clickOn("#addButt");
-		Assertions.assertThat(robot.lookup("#sum").queryAs(Label.class)).hasText(String.valueOf(expected));
+		Assertions.assertThat(robot.lookup("#sum").queryAs(Label.class)).hasText(expected);
 	}
 	
-	private void checkAddNums(FxRobot robot, int num1, int num2) {
+	private void checkAddNums(FxRobot robot, String num1, String num2, String expected) {
 		enterAmount(robot, num1, "#num1");
 		enterAmount(robot, num2, "#num2");
-		checkSum(robot, num1+num2);
+		checkSum(robot, expected);
 	}
 	
 	@Test
 	public void testAdds(FxRobot robot) {
-		checkAddNums(robot, 1, 1);
-		checkAddNums(robot, -1, 1);
-		checkAddNums(robot, 10, 100);
-		checkAddNums(robot, 1, 1);
+		checkAddNums(robot, "0", "1", "1"); // test identity
+		checkAddNums(robot, "-1", "1", "0"); // test negative numbers 
+		checkAddNums(robot, "10", "100", "110"); // test small-large
+		checkAddNums(robot, "100", "10", "110"); // test large-small
+		checkAddNums(robot, "0", "0", "0"); // test 0
+		checkAddNums(robot, "NaN", "1.2", "SUM"); // test non-numbers
+		checkAddNums(robot, "1", "1.2", "SUM"); // test number w/ float
+		checkAddNums(robot, "NaN", "12", "SUM"); // test non-numbers w/ number
 	}
 }

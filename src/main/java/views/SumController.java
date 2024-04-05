@@ -35,7 +35,7 @@ public class SumController
 		} catch (NumberFormatException e)
 		{
 			n1IsNumber = false;
-			num1.setText("0");
+			num1.setText("");
 		}
 
 		try
@@ -44,14 +44,21 @@ public class SumController
 		} catch (NumberFormatException e)
 		{
 			n2IsNumber = false;
-			num2.setText("0");
+			num2.setText("");
 		}
 
 		if (n1IsNumber && n2IsNumber)
 		{
 			int s = n1 + n2;
 			model.setSum(s);
+		} else
+		{
+			sum.setText("SUM");
 		}
+
+		// clear these fields upon performing math
+		num1.setText("");
+		num2.setText("");
 	}
 
 	public void setModel(AdderModel model)

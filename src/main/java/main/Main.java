@@ -1,3 +1,4 @@
+package main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ public class Main extends Application
 	public void start(Stage stage) throws Exception
 	{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("views/MainView.fxml"));
+		loader.setLocation(Main.class.getResource("../views/MainView.fxml"));
 
 		AnchorPane view = loader.load();
 
@@ -23,6 +24,7 @@ public class Main extends Application
 		Scene s = new Scene(view);
 		stage.setScene(s);
 		stage.show();
+		stage.toFront(); // make it appear on top of eclipse
 	}
 
 	public static void main(String[] args)
