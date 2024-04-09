@@ -61,8 +61,8 @@ public class MainViewTest
 		checkAddNums(robot, "10", "100", "110"); // test small-large
 		checkAddNums(robot, "100", "10", "110"); // test large-small
 		checkAddNums(robot, "0", "0", "0"); // test 0
-		checkAddNums(robot, "NaN", "1.2", "SUM"); // test non-numbers
-		checkAddNums(robot, "1", "1.2", "SUM"); // test number w/ float
-		checkAddNums(robot, "NaN", "12", "SUM"); // test non-numbers w/ number
+		checkAddNums(robot, "NaN", "1.2", null); // test non-numbers
+		checkAddNums(robot, "1", "1.2", null); // test number w/ float
+		checkAddNums(robot, "NaN", "12", null); // test non-numbers w/ number
 	}
 }

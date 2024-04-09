@@ -53,7 +53,7 @@ public class SumController
 			model.setSum(s);
 		} else
 		{
-			sum.setText("SUM");
+			sum.setText(null);
 		}
 
 		// clear these fields upon performing math
